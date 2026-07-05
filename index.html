@@ -202,6 +202,7 @@
   .share-icon-btn:hover{border-color:var(--caution);color:var(--paper);}
   .share-note{font-size:11px;color:#7c7a70;line-height:1.5;margin:10px 2px 0;}
   .empty-note{color:#7c7a70;font-size:13.5px;text-align:center;max-width:280px;margin:60px auto 0;line-height:1.5;}
+  .version-tag{text-align:center;color:#4a4840;font-size:10.5px;font-family:'Space Mono',monospace;margin:50px 0 0;letter-spacing:0.05em;}
 </style>
 </head>
 <body>
@@ -344,8 +345,8 @@
       <p class="empty-note" id="empty-note">Set your numbers on the left, then hit print — your receipt appears here.</p>
 
       <div class="next-steps" id="next-steps" style="display:none;">
-        <a href="#">Compare EV lease costs vs. your fuel spend <span class="arrow">→</span></a>
-        <a href="#">See remote-friendly jobs in your field <span class="arrow">→</span></a>
+        <a href="javascript:void(0)" onclick="return false;">Compare EV lease costs vs. your fuel spend <span class="arrow">Soon</span></a>
+        <a href="javascript:void(0)" onclick="return false;">See remote-friendly jobs in your field <span class="arrow">Soon</span></a>
       </div>
       <div id="share-block" style="display:none;max-width:380px;margin:14px auto 0;">
         <button class="download-btn" id="download-img">Download as image</button>
@@ -362,6 +363,7 @@
       </div>
     </div>
   </div>
+  <p class="version-tag">Build v4 — 2026-07-05</p>
 </div>
 
 <script>
