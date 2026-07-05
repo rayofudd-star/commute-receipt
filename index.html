@@ -11,13 +11,15 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Commute Receipt — what's your drive really costing you?">
 <meta property="og:description" content="Get an itemized receipt for your commute: fuel, tolls, parking, and the days of your life spent driving. Works worldwide, any currency, miles or km.">
-<meta property="og:image" content="social-preview.png">
+<meta property="og:image" content="https://rayofudd-star.github.io/commute-receipt/social-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:url" content="https://rayofudd-star.github.io/commute-receipt/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Commute Receipt — what's your drive really costing you?">
 <meta name="twitter:description" content="Get an itemized receipt for your commute: fuel, tolls, parking, and the days of your life spent driving.">
-<meta name="twitter:image" content="social-preview.png">
+<meta name="twitter:image" content="https://rayofudd-star.github.io/commute-receipt/social-preview.png">
 <meta name="description" content="Get an itemized receipt for your commute: fuel, tolls, parking, and the days of your life spent driving. Works worldwide, any currency, miles or km.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -214,14 +216,14 @@
   <div class="region-bar">
     <div class="grp" id="unit-toggle">
       <label>Units</label>
-      <button data-mode="imperial" class="active">Miles / Gallons</button>
-      <button data-mode="metric">Km / Liters</button>
+      <button data-mode="imperial">Miles / Gallons</button>
+      <button data-mode="metric" class="active">Km / Liters</button>
     </div>
     <div class="grp">
       <label>Currency</label>
       <select id="currency">
+        <option value="₹" selected>₹ INR</option>
         <option value="$">$ USD</option>
-        <option value="₹">₹ INR</option>
         <option value="€">€ EUR</option>
         <option value="£">£ GBP</option>
         <option value="¥">¥ JPY</option>
@@ -238,18 +240,18 @@
       <p class="panel-title">Enter your commute</p>
 
       <div class="field">
-        <label>One-way distance <span class="val" id="v-dist">12 <span id="unit-dist-label">mi</span></span></label>
-        <input type="range" id="dist" min="1" max="60" value="12">
+        <label>One-way distance <span class="val" id="v-dist">0 <span id="unit-dist-label">km</span></span></label>
+        <input type="range" id="dist" min="0" max="150" value="0">
       </div>
 
       <div class="field">
-        <label>One-way drive time <span class="val" id="v-mins">25 min</span></label>
-        <input type="range" id="mins" min="5" max="90" value="25">
+        <label>One-way drive time <span class="val" id="v-mins">0 min</span></label>
+        <input type="range" id="mins" min="0" max="90" value="0">
       </div>
 
       <div class="field">
-        <label>Days commuting / week <span class="val" id="v-days">5</span></label>
-        <input type="range" id="days" min="1" max="7" value="5">
+        <label>Days commuting / week <span class="val" id="v-days">1</span></label>
+        <input type="range" id="days" min="1" max="7" value="1">
       </div>
 
       <div class="toggle-row" id="fuel-toggle">
@@ -258,30 +260,30 @@
       </div>
 
       <div class="field" id="mpg-field">
-        <label>Fuel efficiency <span class="hint">(car, bike, scooter — any value)</span></label>
+        <label>Fuel efficiency, average <span id="unit-eff-label">km per litre</span></label>
         <input type="number" id="mpg" value="" min="0" step="0.1" placeholder="e.g. 55 for a scooter">
       </div>
 
       <div class="field" id="fuelprice-field">
-        <label>Fuel price, per <span id="unit-fuel-label">gallon</span></label>
+        <label>Fuel price, per <span id="unit-fuel-label">liter</span></label>
         <div class="money-input">
-          <span id="cur-sym-1">$</span>
+          <span id="cur-sym-1">₹</span>
           <input type="number" id="gas" value="" min="0" step="0.01" placeholder="0.00">
         </div>
       </div>
 
       <div class="field" id="evcost-field" style="display:none;">
-        <label>Electricity cost, per <span id="unit-ev-label">mile</span></label>
+        <label>Electricity cost, per <span id="unit-ev-label">km</span></label>
         <div class="money-input">
-          <span id="cur-sym-4">$</span>
+          <span id="cur-sym-4">₹</span>
           <input type="number" id="evcost" value="" min="0" step="0.001" placeholder="0.00">
         </div>
       </div>
 
       <div class="field">
-        <label>Wear &amp; maintenance, per <span id="unit-maint-label">mile</span> <span class="hint">(optional)</span></label>
+        <label>Wear &amp; maintenance, per <span id="unit-maint-label">km</span> <span class="hint">(optional)</span></label>
         <div class="money-input">
-          <span id="cur-sym-3">$</span>
+          <span id="cur-sym-3">₹</span>
           <input type="number" id="maint" value="0" min="0" step="0.01" placeholder="0.00">
         </div>
       </div>
@@ -289,7 +291,7 @@
       <div class="field">
         <label>Tolls, round trip / day</label>
         <div class="money-input">
-          <span id="cur-sym-2">$</span>
+          <span id="cur-sym-2">₹</span>
           <input type="number" id="tolls" value="0" min="0" step="0.5">
         </div>
       </div>
@@ -297,7 +299,7 @@
       <div class="field">
         <label>Parking / day</label>
         <div class="money-input">
-          <span id="cur-sym-5">$</span>
+          <span id="cur-sym-5">₹</span>
           <input type="number" id="parking" value="0" min="0" step="0.5">
         </div>
       </div>
@@ -306,7 +308,7 @@
     </div>
 
     <div>
-      <div class="period-row" id="period-toggle">
+      <div class="period-row" id="period-toggle" style="display:none;">
         <button data-period="daily">Daily</button>
         <button data-period="weekly">Weekly</button>
         <button data-period="monthly">Monthly</button>
@@ -369,8 +371,8 @@ const dist = $('dist'), mins = $('mins'), days = $('days'), mpg = $('mpg'), gas 
       mpgField = $('mpg-field'), fuelpriceField = $('fuelprice-field'), evcostField = $('evcost-field');
 
 let fuelMode = 'gas';
-let unitSystem = 'imperial';
-let currencySymbol = '$';
+let unitSystem = 'metric';
+let currencySymbol = '₹';
 let currentPeriod = 'annual';
 const WEEKS_PER_YEAR = 48;
 
@@ -402,14 +404,17 @@ $('unit-toggle').addEventListener('click', e => {
     $('unit-fuel-label').textContent = 'liter';
     $('unit-ev-label').textContent = 'km';
     $('unit-maint-label').textContent = 'km';
-    dist.min = 1; dist.max = 150; dist.value = 19;
+    $('unit-eff-label').textContent = 'km per litre';
+    dist.min = 0; dist.max = 150;
   } else {
     $('unit-fuel-label').textContent = 'gallon';
     $('unit-ev-label').textContent = 'mile';
     $('unit-maint-label').textContent = 'mile';
-    dist.min = 1; dist.max = 90; dist.value = 12;
+    $('unit-eff-label').textContent = 'miles per gallon';
+    dist.min = 0; dist.max = 90;
   }
   syncLabels();
+  if(window._raw) computeAndRender();
 });
 
 function syncLabels(){
@@ -430,6 +435,7 @@ $('fuel-toggle').addEventListener('click', e => {
   mpgField.style.display = isEv ? 'none' : 'block';
   fuelpriceField.style.display = isEv ? 'none' : 'block';
   evcostField.style.display = isEv ? 'block' : 'none';
+  if(window._raw) computeAndRender();
 });
 
 $('period-toggle').addEventListener('click', e => {
@@ -446,7 +452,15 @@ function fmt(n){
   return currencySymbol + rounded.toLocaleString('en-US');
 }
 
-$('calc').addEventListener('click', () => {
+$('calc').addEventListener('click', computeAndRender);
+
+// After the first calculation, keep the receipt live as inputs change —
+// no need to keep re-tapping "Print my receipt".
+[dist, mins, days, mpg, gas, evcost, maint, tolls, parking].forEach(el => {
+  el.addEventListener('input', () => { if(window._raw) computeAndRender(); });
+});
+
+function computeAndRender(){
   const roundTripDist = Number(dist.value) * 2;
   const annualDist = roundTripDist * Number(days.value) * WEEKS_PER_YEAR;
 
@@ -475,10 +489,11 @@ $('calc').addEventListener('click', () => {
   $('empty-note').style.display = 'none';
   $('next-steps').style.display = 'grid';
   $('share-block').style.display = 'block';
+  $('period-toggle').style.display = 'flex';
   if(navigator.share){ $('native-share').style.display = 'block'; }
 
   render(currentPeriod);
-});
+}
 
 function render(period){
   const r = window._raw;
@@ -518,23 +533,27 @@ function render(period){
   $('total-label').textContent = periodLabel + ' TOTAL';
   $('r-sub').textContent = 'DAILY GRIND RECEIPT — ' + periodLabel;
 
+  document.getElementById('row-fuel').classList.toggle('zero', fuelCost === 0);
   document.getElementById('row-maint').classList.toggle('zero', maintCost === 0);
   document.getElementById('row-tolls').classList.toggle('zero', tollsCost === 0);
   document.getElementById('row-parking').classList.toggle('zero', parkingCost === 0);
 
+  let timeText;
   if(period === 'annual'){
     const daysOfLife = timeMinutes / 60 / 24;
     $('out-time').textContent = daysOfLife.toFixed(1);
     $('time-label').textContent = 'DAYS OF YOUR LIFE SPENT DRIVING THIS YEAR';
+    timeText = daysOfLife.toFixed(1) + ' days of my life';
   } else {
     const hours = timeMinutes / 60;
     $('out-time').textContent = hours.toFixed(1);
     $('time-label').textContent = 'HOURS SPENT DRIVING, ' + periodLabel;
+    timeText = hours.toFixed(1) + ' hours';
   }
 
   $('out-miles').textContent = (periodDist < 10 ? periodDist.toFixed(1) : Math.round(periodDist)).toLocaleString('en-US') + ' ' + r.distUnit + ' DRIVEN · THANK YOU FOR COMMUTING';
 
-  window._lastResult = { total, periodLabel, currencySymbol };
+  window._lastResult = { total, periodLabel, currencySymbol, timeText };
 }
 
 async function captureReceiptImage(){
@@ -566,7 +585,7 @@ function buildShareText(){
   const r = window._lastResult;
   if(!r) return '';
   const roundedTotal = r.total < 10 ? r.total.toFixed(2) : Math.round(r.total).toLocaleString('en-US');
-  return `My commute costs me ${r.currencySymbol}${roundedTotal} ${r.periodLabel.toLowerCase()} — and hours I'll never get back. Check yours:`;
+  return `My commute costs me ${r.currencySymbol}${roundedTotal} ${r.periodLabel.toLowerCase()} — and ${r.timeText} I'll never get back. Try yours: ${location.href}`;
 }
 
 $('native-share').addEventListener('click', async () => {
